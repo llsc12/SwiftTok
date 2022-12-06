@@ -2,7 +2,7 @@
 import Foundation
 import SwiftSoup
 
-final class Client: ObservableObject {
+class Client: ObservableObject {
     
     @Published var clientIsWorking = false
     
@@ -19,7 +19,9 @@ final class Client: ObservableObject {
                 let (_, res) = try await URLSession.shared.data(for: req)
                 guard let res = res as? HTTPURLResponse else { return }
                 guard !(res.statusCode != 200) else { return }
-                self.clientIsWorking = true
+                DispatchQueue.main.async {
+                    self.clientIsWorking = true
+                }
             } catch {}
         }
     }
