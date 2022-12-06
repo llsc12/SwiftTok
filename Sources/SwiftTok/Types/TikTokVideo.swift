@@ -17,7 +17,7 @@ public struct TikTokVideo: Codable {
     public let vl1: Bool?
     public let takeDown: Int
     public let itemMute: Bool?
-    public let authorStats: TikTokAuthorStats
+    public let authorStats: TikTokAuthorStats?
     public let privateItem, duetEnabled, stitchEnabled: Bool
     public let stickersOnItem: [TikTokStickersOnItem]
     public let isAd, shareEnabled: Bool
