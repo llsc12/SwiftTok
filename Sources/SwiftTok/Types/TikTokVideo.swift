@@ -9,7 +9,7 @@ public struct TikTokVideo: Codable {
     public let author: String
     public let music: TikTokMusic
     public let stats: TikTokStats
-    public let isActivityItem: Bool
+    public let isActivityItem: Bool?
     public let originalItem, officalItem: Bool
     public let secret, forFriend, digged: Bool
     public let itemCommentStatus: Int
