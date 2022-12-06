@@ -6,12 +6,13 @@ final class SwiftTokTests: XCTestCase {
     let testVideosById: [String] = [
         "ZMFqj7rpQ",
         "ZMFq9c6bW",
+        "ZMFqVW8qc",
     ]
     
     let testVideosByUrl: [String] = [
         "https://vm.tiktok.com/ZMFqj7rpQ",
         "https://vm.tiktok.com/ZMFq9c6bW",
-//        "https://www.tiktok.com/7155899472973712646", it turns out this is invalid lmao
+        "https://vm.tiktok.com/ZMFqVW8qc/",
         "https://www.tiktok.com/@smg4official/video/7168704240532131073?is_from_webapp=1&sender_device=pc"
     ]
     

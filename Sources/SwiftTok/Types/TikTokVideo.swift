@@ -103,7 +103,7 @@ public struct TikTokMusic: Codable {
     public let authorName: String
     public let original: Bool
     public let duration: Int
-    public let album: String
+    public let album: String?
     public let scheduleSearchTime: Int
 
     enum CodingKeys: String, CodingKey {
@@ -112,7 +112,7 @@ public struct TikTokMusic: Codable {
         case coverLarge, coverMedium, coverThumb, authorName, original, duration, album, scheduleSearchTime
     }
 
-    public init(id: String, title: String, playURL: URL, coverLarge: String, coverMedium: String, coverThumb: String, authorName: String, original: Bool, duration: Int, album: String, scheduleSearchTime: Int) {
+    public init(id: String, title: String, playURL: URL, coverLarge: String, coverMedium: String, coverThumb: String, authorName: String, original: Bool, duration: Int, album: String?, scheduleSearchTime: Int) {
         self.id = id
         self.title = title
         self.playURL = playURL
