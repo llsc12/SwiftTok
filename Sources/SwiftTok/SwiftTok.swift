@@ -2,7 +2,7 @@
 import Foundation
 import SwiftSoup
 
-class Client: ObservableObject {
+public class Client: ObservableObject {
     
     @Published var clientIsWorking = false
     
