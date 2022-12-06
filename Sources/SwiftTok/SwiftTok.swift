@@ -53,6 +53,7 @@ public class Client: ObservableObject {
         guard let data = final.data(using: .utf8) else { throw "Couldn't turn json string into data for decoding"}
         // i promise im not proud of this
         
+        print(final)
         let decoded = try decoder.decode(TikTokVideo.self, from: data)
         return decoded
     }
