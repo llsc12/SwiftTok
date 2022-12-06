@@ -30,7 +30,7 @@ public struct TikTokVideo: Codable {
     public let downloadSetting: Int
     public let authorPrivate: Bool
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case id, desc, createTime, scheduleTime, video, author, music, stats, isActivityItem, originalItem, officalItem, secret, forFriend, digged, itemCommentStatus, showNotPass, vl1, takeDown, itemMute, authorStats, privateItem, duetEnabled, stitchEnabled, stickersOnItem, isAd, shareEnabled, duetDisplay, stitchDisplay, indexEnabled, diversificationLabels, adAuthorization, adLabelVersion, locationCreated, nickname
         case authorID = "authorId"
         case authorSECID = "authorSecId"
@@ -106,7 +106,7 @@ public struct TikTokMusic: Codable {
     public let album: String?
     public let scheduleSearchTime: Int
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case id, title
         case playURL = "playUrl"
         case coverLarge, coverMedium, coverThumb, authorName, original, duration, album, scheduleSearchTime
@@ -201,7 +201,7 @@ public struct TikTokBitrateInfo: Codable {
     public let playAddr: TikTokPlayAddr
     public let codecType: String
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case gearName = "GearName"
         case bitrate = "Bitrate"
         case qualityType = "QualityType"
@@ -224,7 +224,7 @@ public struct TikTokPlayAddr: Codable {
     public let urlList: [URL]
     public let dataSize, urlKey, fileHash, fileCS: String
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case uri = "Uri"
         case urlList = "UrlList"
         case dataSize = "DataSize"
@@ -254,7 +254,7 @@ public struct TikTokSubtitleInfo: Codable {
     public let videoSubtitleID: Int
     public let size: String
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case languageID = "LanguageID"
         case languageCodeName = "LanguageCodeName"
         case url = "Url"
@@ -293,7 +293,7 @@ public struct TikTokVolumeInfo: Codable {
     public let loudness: Double
     public let peak: Double
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case loudness = "Loudness"
         case peak = "Peak"
     }
