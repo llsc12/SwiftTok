@@ -8,7 +8,7 @@ public class Client: ObservableObject {
     
     let decoder = JSONDecoder()
     
-    init() {
+    public init() {
         // set up decoder prefs
         decoder.dateDecodingStrategy = .secondsSince1970
         // first check
