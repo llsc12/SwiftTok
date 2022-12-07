@@ -30,7 +30,7 @@ public class Client: ObservableObject {
     }
     
     public func getVideoData(for url: URL) async throws -> TikTokVideo {
-        guard let url = try? UrlBuilders.sanitiseUrl(url.absoluteString) else { throw "Couldn't sanitise tiktok url" }
+        guard let url = try? Sanitisers.sanitiseUrl(url.absoluteString) else { throw "Couldn't sanitise tiktok url" }
         return try await rawVideoData(url)
     }
     

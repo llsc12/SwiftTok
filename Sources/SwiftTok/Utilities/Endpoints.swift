@@ -15,37 +15,40 @@ struct UrlBuilders {
         throw "Invalid id"
     }
     
-    static func sanitiseUrl(_ str: String) throws -> URL {
-        if let match = str.wholeMatch(of: shortUrlRegex) {
-            let id = match.output.1
-            return vm.appending(path: id)
-        } else if let match = str.wholeMatch(of: longUrlRegex) {
-            let id = match.output.2
-            if let user = match.output.1 {
-                return main.appending(path: "@\(user)").appending(path: "video").appending(path: id)
-            } else {
-                throw "Failed to make long format url, need user account name" // i didnt know :woecry:
-            }
-        } else {
-            throw "Failed to validate"
-        }
-    }
-    
     static func streamUrl(_ username: String) throws -> URL {
-        let username = try sanitiseName(username)
+        let username = try Sanitisers.sanitiseUsername(username)
         let url = main.appending(path: "@\(username)").appending(path: "live")
         return url
     }
+}
+
+public struct Sanitisers {
     
-    static func sanitiseName(_ str: String) throws -> String {
+    public static func sanitiseUsername(_ str: String) throws -> String {
         if let _ = str.wholeMatch(of: usernameRegex) {
             return str
         } else {
             throw "Invalid username"
         }
     }
+    
+    public static func sanitiseUrl(_ str: String) throws -> URL {
+        if let match = str.wholeMatch(of: shortUrlRegex) {
+            let id = match.output.1
+            return UrlBuilders.vm.appending(path: id)
+        } else if let match = str.wholeMatch(of: longUrlRegex) {
+            let id = match.output.2
+            if let user = match.output.1 {
+                return UrlBuilders.main.appending(path: "@\(user)").appending(path: "video").appending(path: id)
+            } else {
+                throw "Failed to make long format url, need user account name" // i didnt know :woecry:
+                // MARK: - You can get the redirect from https://vm.tiktok.com/{longId} -
+            }
+        } else {
+            throw "Failed to validate"
+        }
+    }
 }
-
 
 // https:\/\/www.tiktok.com\/(?:@([A-z0-9_.]{2,28})\/video\/)?([0-9]{19})\/?.*
 let longUrlRegex = Regex {

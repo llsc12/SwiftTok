@@ -60,7 +60,7 @@ final class SwiftTokTests: XCTestCase {
         
         for url in testVideosByUrl {
             do {
-                let egg = try UrlBuilders.sanitiseUrl(url)
+                let egg = try Sanitisers.sanitiseUrl(url)
                 print("[SwiftTokTests] Success! \(egg)")
             } catch(let err) {
                 error = true
