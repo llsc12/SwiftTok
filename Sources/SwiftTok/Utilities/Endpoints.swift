@@ -24,10 +24,24 @@ struct UrlBuilders {
             if let user = match.output.1 {
                 return main.appending(path: "@\(user)").appending(path: "video").appending(path: id)
             } else {
-                throw "Failed to make long format url, need user account name"
+                throw "Failed to make long format url, need user account name" // i didnt know :woecry:
             }
         } else {
             throw "Failed to validate"
+        }
+    }
+    
+    static func streamUrl(_ username: String) throws -> URL {
+        let username = try sanitiseName(username)
+        let url = main.appending(path: "@\(username)").appending(path: "live")
+        return url
+    }
+    
+    static func sanitiseName(_ str: String) throws -> String {
+        if let _ = str.wholeMatch(of: usernameRegex) {
+            return str
+        } else {
+            throw "Invalid username"
         }
     }
 }
@@ -95,3 +109,13 @@ let shortIdRegex = Regex {
     }
 }
     .anchorsMatchLineEndings()
+
+let usernameRegex = Regex {
+    Repeat(2...28) {
+        CharacterClass(
+            .anyOf("_."),
+            ("A"..."z"),
+            ("0"..."9")
+        )
+    }
+}

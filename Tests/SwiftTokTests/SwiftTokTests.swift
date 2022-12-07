@@ -23,7 +23,7 @@ final class SwiftTokTests: XCTestCase {
         
         for id in testVideosById {
             do {
-                let _ = try await client.getVideo(with: id)
+                let _ = try await client.getVideoData(with: id)
             } catch(let err) {
                 error = true
                 print("[SwiftTokTests] [\(id)] \(err)")
@@ -43,7 +43,7 @@ final class SwiftTokTests: XCTestCase {
         for url in testVideosByUrl {
             do {
                 guard let url = URL(string: url) else { continue }
-                let _ = try await client.getVideo(for: url)
+                let _ = try await client.getVideoData(for: url)
             } catch(let err) {
                 error = true
                 print("[SwiftTokTests] [\(url)] \(err)")
@@ -71,5 +71,10 @@ final class SwiftTokTests: XCTestCase {
         if error {
             throw "[SwiftTokTests] Check console for issues"
         }
+    }
+    
+    func testStreams() async throws {
+        let client = Client()
+        try await client.getLiveStream("kingmajortom")
     }
 }
