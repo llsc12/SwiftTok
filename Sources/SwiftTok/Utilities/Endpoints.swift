@@ -32,6 +32,15 @@ public struct Sanitisers {
         }
     }
     
+    public static func sanitiseId(_ id: String) throws -> String {
+        if let _ = id.wholeMatch(of: shortIdRegex) {
+            return id
+        } else if let _ = id.wholeMatch(of: longIdRegex) {
+            return id
+        }
+        throw "Invalid id"
+    }
+    
     public static func sanitiseUrl(_ str: String) throws -> URL {
         if let match = str.wholeMatch(of: shortUrlRegex) {
             let id = match.output.1
